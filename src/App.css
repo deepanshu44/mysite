@@ -1,0 +1,31 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+html{
+    box-sizing: border-box;
+}
+body{
+    font-size: 40px;
+}
+.bar{
+    display: flex;
+    justify-content: space-around;
+    /* background-color: cyan; */
+}
+.bar> *{
+    flex: 1;
+    padding: 10px;
+    border: 3px solid #999;
+    text-align: center;
+    margin: 10px;
+}
+.top> div:last-of-type{
+    text-align: center;
+    width: 50%;
+    margin:10px auto 0 auto ;
+    border: 3px solid black;
+border-radius: 20px;
+    }
+button:hover{
+    transform: scale(0.9);
+    transition-duration: 0.3s;
+}
