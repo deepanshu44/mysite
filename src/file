@@ -1,0 +1,43 @@
+(require 'mmm-mode)
+(setq mmm-global-mode t)
+(setq mmm-submode-decoration-level 0)
+(setq mmm-global-mode 'maybe)
+(mmm-add-classes
+ '((mmm-jsx-mode
+    :front "\\(return\s\\|n\s\\|(\n\s*\\)<"
+    :front-offset -1
+    :back ">\n?\s*)"
+    :back-offset 1
+    :submode rjsx-mode)))
+(mmm-add-mode-ext-class 'typescript-mode nil 'mmm-jsx-mode)
+
+;;sample
+(mmm-add-group
+ 'html-js
+ '((js-script-cdata
+    :submode js-mode
+    :face mmm-code-submode-face
+    :front "<script[^>]*>[ \t\n]*\\(//\\)?<!\\[CDATA\\[[ \t]*\n?"
+    :back "[ \t]*\\(//\\)?]]>[ \t\n]*</script>")
+   (js-script
+    :submode js-mode
+    :face mmm-code-submode-face
+    :front "<script[^>]*>[ \t]*\n?"
+    :back "[ \t]*</script>"
+    :insert ((?j js-tag nil @ "<script type=\"text/javascript\">\n"
+		                  @ "" _ "" @ "\n</script>" @)))))
+
+(mmm-add-group
+ 'html-css
+ '((elisp-cdata
+    :submode elisp
+    :face mmm-code-submode-face
+    :front "<test[^>]*>[ \t\n]*\\(//\\)?<!\\[CDATA\\[[ \t]*\n?"
+    :back "[ \t]*\\(//\\)?]]>[ \t\n]*</test>")
+   (elsip
+    :submode elisp
+    :face mmm-code-submode-face
+    :front "<test[^>]*>[ \t]*\n?"
+    :back "[ \t]*</test>"
+    :insert ((?c elisp-tag nil @ "<test type=\"text/css\">\n"
+		                  @ "" _ "" @ "\n</test>" @)))))

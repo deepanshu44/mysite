@@ -1,0 +1,10 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+html{
+    box-sizing: border-box;
+    font-size: 30px;
+}
+Button{
+    width: 200px;
+}
+
